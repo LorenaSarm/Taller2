@@ -15,10 +15,7 @@ import java.net.URLClassLoader;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
-/**
- *
- * @author CAMILA
- */
+
 public class Instancia {
 
     public static Ascensor newAscensor() {

@@ -5,10 +5,7 @@
  */
 package taller2;
 
-/**
- *
- * @author CAMILA
- */
+
 public class Taller2 {
 
     /**

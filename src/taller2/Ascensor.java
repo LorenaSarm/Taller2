@@ -5,10 +5,6 @@
  */
 package taller2;
 
-/**
- *
- * @author CAMILA
- */
 public class Ascensor {
     
     private int piso=1;
