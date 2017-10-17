@@ -1,0 +1,8 @@
+Metodo invocado: subir2Pisos, en la fecha: 16/10/2017, a las: 16:15:53.
+Metodo invocado: subir1Piso, en la fecha: 16/10/2017, a las: 16:15:53.
+Metodo invocado: bajar1Piso, en la fecha: 16/10/2017, a las: 16:15:53.
+Metodo invocado: bajar3Pisos, en la fecha: 16/10/2017, a las: 16:15:53.
+Metodo invocado: subir2Pisos, en la fecha: 16/10/2017, a las: 16:19:33.
+Metodo invocado: bajar3Pisos, en la fecha: 16/10/2017, a las: 16:19:33.
+Metodo invocado: bajar1Piso, en la fecha: 16/10/2017, a las: 16:19:33.
+Metodo invocado: subir1Piso, en la fecha: 16/10/2017, a las: 16:19:33.

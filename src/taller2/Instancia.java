@@ -7,14 +7,15 @@ package taller2;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Calendar;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
-
 
 public class Instancia {
 
@@ -25,7 +26,6 @@ public class Instancia {
             throw new RuntimeException(
                     "No se pudo crear una nueva instancia de la clase", e);
         }
-
     }
 
     public static Object newInstancia(Class clase) throws Exception {
@@ -65,6 +65,19 @@ public class Instancia {
                     sb.append(");");
                 }
                 sb.append("}");
+
+                if (metodo.getAnnotations() != null) {
+                    if (metodo.getAnnotation(Log.class) != null) {
+                        //Metodo Auxiliar
+                        writeInLog(metodo.getName());
+                    }
+                }
+                if (metodo.getAnnotations() != null) {
+                    if (metodo.getAnnotation(PostConstructor.class) != null) {
+                        System.out.println("Metodo: " + metodo
+                                + " instanciado despues de constructor.");
+                    }
+                }
             }
         }
         sb.append("}");
@@ -85,6 +98,28 @@ public class Instancia {
                 + "Proxy.class").delete();
 
         return cls.newInstance();
+    }
+
+    private static void writeInLog(String metodo) throws IOException {
+        File fileLog = new File("log.txt");
+        if (fileLog.exists() == false) {
+            FileWriter fileLogWrite = new FileWriter(fileLog, false);
+        }
+        FileWriter fileLogWrite = new FileWriter(fileLog, true);
+        Calendar actualDate = Calendar.getInstance();
+        fileLogWrite.write( "Metodo invocado: " + metodo +
+                            ", en la fecha: "
+                            + (String.valueOf(actualDate.get(Calendar.DAY_OF_MONTH))
+                            + "/" + String.valueOf(actualDate.get(Calendar.MONTH) + 1)
+                            + "/" + String.valueOf(actualDate.get(Calendar.YEAR))
+                            + ", a las: "
+                            + String.valueOf(actualDate.get(Calendar.HOUR_OF_DAY))
+                            + ":" + String.valueOf(actualDate.get(Calendar.MINUTE))
+                            + ":" + String.valueOf(actualDate.get(Calendar.SECOND)))
+                            + ".\r\n");
+        fileLogWrite.flush();
+        fileLogWrite.close();
+        System.out.println("Direccion del archivo Log: " + fileLog.getAbsolutePath());
     }
 
     private static String modifierFromString(int m) {
